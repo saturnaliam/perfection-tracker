@@ -12,6 +12,19 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
+        
+
+        FileIO writer = FileIO.getInstance();
+
+        try {
+            writer.serializeRecipes(getRecipes());
+            writer.deserializeRecipes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static Recipe[] getRecipes() {
         /* raw ingredients */
         RawIngredient yam = new RawIngredient("Yam");
         RawIngredient pumpkin = new RawIngredient("Pumpkin");
@@ -52,7 +65,7 @@ public class Main {
         RawIngredient artichoke = new RawIngredient("Artichoke");
         RawIngredient pineapple = new RawIngredient("Pineapple");
         RawIngredient coconut = new RawIngredient("Coconut");
-        //RawIngredient taro = new RawIngredient("Taro Root");
+        RawIngredient taro = new RawIngredient("Taro Root");
         RawIngredient mango = new RawIngredient("Mango");
         RawIngredient rice = new RawIngredient("Rice");
 
@@ -86,22 +99,11 @@ public class Main {
         Recipe survivalBurger = new RecipeBuilder().addName("Survival Burger").addId(241).addIngredient(bread).addIngredient(caveCarrot).addIngredient(eggplant).build();
         Recipe tropicalCurry = new RecipeBuilder().addName("Tropical Curry").addId(907).addIngredient(coconut).addIngredient(pineapple).addIngredient(pepper).build();
         Recipe mangoRice = new RecipeBuilder().addName("Mango Sticky Rice").addId(905).addIngredient(mango).addIngredient(coconut).addIngredient(rice).build();
-        //Recipe poi = new RecipeBuilder().addName("Poi").addId(906).addManyIngredients(taro, 4).build();
+        Recipe poi = new RecipeBuilder().addName("Poi").addId(906).addManyIngredients(taro, 4).build();
 
-        FileIO writer = FileIO.getInstance();
-        Recipe[] recipes = { mangoRice, superMeal };
-        writer.serializeRecipes(recipes);
-        writer.deserializeRecipes();
-    }
-
-    private static Map<String, Integer> countIngredients(Recipe[] recipes) {
-        Map<String, Integer> items = new HashMap<>();
-
-        for (int i = 0; i < recipes.length; i++) {
-            Stream<Map.Entry<String, Integer>> combined = Stream.concat(recipes[i].countItems().entrySet().stream(), items.entrySet().stream());
-            items = combined.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> a + b));
-        }
-        
-        return items;
+        Recipe[] recipes = { bread, autumnsBounty, beanHotpot, cranberrySauce, eggplantParmesan, omelet, farmersLunch, fishStew, tortilla, fishTaco, 
+                 friedCalamari, glazedYams, luckyLunch, poppyseedMuffin, pumpkinPie, pumpkinSoup, radishSalad, redPlate, rhubardPie, 
+                 roastedHazelnuts, salmonDinner, spicyEel, stirFry, strangeBun, stuffing, superMeal, survivalBurger, tropicalCurry, mangoRice, poi };
+        return recipes;
     }
 }
