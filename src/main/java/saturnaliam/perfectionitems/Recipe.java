@@ -1,13 +1,12 @@
 package saturnaliam.perfectionitems;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Recipe extends RawIngredient implements Serializable {
+public class Recipe extends RawIngredient {
     public int id;
     public List<RawIngredient> ingredients;
 
