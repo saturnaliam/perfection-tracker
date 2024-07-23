@@ -9,6 +9,7 @@ public class Main {
         try {
             writer.serializeRecipes(getRecipes());
             writer.deserializeRecipes();
+            new SaveAnalyze();
         } catch (Exception e) {
             e.printStackTrace();
         }
