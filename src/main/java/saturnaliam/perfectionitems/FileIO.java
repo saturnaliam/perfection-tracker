@@ -47,8 +47,8 @@ public class FileIO {
         }
     }
 
-    public Map<Integer, Recipe> deserializeRecipes() throws Exception {
-        Map<Integer, Recipe> recipes = new HashMap<>();
+    public Map<String, Recipe> deserializeRecipes() throws Exception {
+        Map<String, Recipe> recipes = new HashMap<>();
         try {
             Stream<Path> pathStream = Files.walk(Paths.get("recipes/"));
             List<Path> paths = pathStream.filter(Files::isRegularFile).collect(Collectors.toList());

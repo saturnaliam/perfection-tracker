@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Recipe extends RawIngredient {
-    public int id;
+    public String id;
     public List<RawIngredient> ingredients;
 
-    public Recipe(String name, List<RawIngredient> ingredients, int id) {
+    public Recipe(String name, List<RawIngredient> ingredients, String id) {
         super(name);
         this.ingredients = ingredients;
         this.id = id;

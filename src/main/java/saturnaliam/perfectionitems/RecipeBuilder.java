@@ -5,10 +5,10 @@ import java.util.List;
 
 public class RecipeBuilder {
     private String name = null;
-    private int id = -1;
+    private String id;
     private List<RawIngredient> ingredients = new ArrayList<RawIngredient>();
 
-    public RecipeBuilder(String name, int id) {
+    public RecipeBuilder(String name, String id) {
         this.id = id;
         this.name = name;
     }
