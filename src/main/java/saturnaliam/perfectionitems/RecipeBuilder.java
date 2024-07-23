@@ -8,14 +8,9 @@ public class RecipeBuilder {
     private int id = -1;
     private List<RawIngredient> ingredients = new ArrayList<RawIngredient>();
 
-    RecipeBuilder addId(int id) {
+    public RecipeBuilder(String name, int id) {
         this.id = id;
-        return this;
-    }
-
-    RecipeBuilder addName(String name) {
         this.name = name;
-        return this;
     }
 
     RecipeBuilder addIngredient(RawIngredient ingredient) {
